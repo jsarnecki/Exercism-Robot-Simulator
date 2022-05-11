@@ -26,15 +26,15 @@ describe('Robot', () => {
       expect(robot.bearing).toEqual('east');
     });
 
-    xtest('facing west, at origin', () => {
+    test('facing west, at origin', () => {
       const robot = new Robot();
-      robot.place({ direction: 'west', x: 0, y: 0 });
+      robot.place({ direction: 'west', x: 1, y: 0 });
 
       expect(robot.bearing).toEqual('west');
-      expect(robot.coordinates).toEqual([0, 0]);
+      expect(robot.coordinates).toEqual([1, 0]);
     });
 
-    xtest('at negative position facing south', () => {
+    test('at negative position facing south', () => {
       const robot = new Robot();
       robot.place({ direction: 'south', x: -1, y: -1 });
 
@@ -42,7 +42,7 @@ describe('Robot', () => {
       expect(robot.coordinates).toEqual([-1, -1]);
     });
 
-    xtest('invalid robot bearing', () => {
+    test('invalid robot bearing', () => {
       const robot = new Robot();
 
       expect(InvalidInputError.prototype).toBeInstanceOf(Error);
