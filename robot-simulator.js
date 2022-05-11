@@ -39,5 +39,16 @@ export class Robot {
 
   evaluate(instructions) {
     // Finds L R A
+    // Instructions come in as a string, split
+    // Go thru array of instructions
+    // Each direction must follow based on the previous
+    let currentDir = this.bearing;
+    let currentCoord = this.coordinates;
+    let directions = instructions.split("");
+    for (let x of directions) {
+      if (x === 'R' && currentDir === 'north') {
+        this.face = 'east';
+      }
+    }
   }
 }

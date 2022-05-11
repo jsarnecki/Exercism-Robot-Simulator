@@ -55,7 +55,7 @@ describe('Robot', () => {
   describe('Rotating clockwise', () => {
     const robot = new Robot();
 
-    xtest('changes north to east', () => {
+    test('changes north to east', () => {
       robot.place({ direction: 'north', x: 0, y: 0 });
 
       turnRight(robot);
