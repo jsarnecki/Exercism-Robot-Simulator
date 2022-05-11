@@ -19,7 +19,7 @@ describe('Robot', () => {
       expect(robot.bearing).toEqual('north');
     });
 
-    xtest('facing east', () => {
+    test('facing east', () => {
       const robot = new Robot();
       robot.place({ direction: 'east', x: 0, y: 0 });
 

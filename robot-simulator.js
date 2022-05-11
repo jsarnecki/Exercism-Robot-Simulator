@@ -7,20 +7,29 @@ export class InvalidInputError extends Error {
 }
 
 export class Robot {
+
+  constructor(face) {
+    this.face = face;
+  }
+
   get bearing() {
-    // Grab from place() 
+    if (this.face) {
+      return this.face;
+    }
     return 'north';
   }
 
   get coordinates() {
-    throw new Error('Remove this statement and implement this function');
+   // Get from place - return as [x, y]
   }
 
   place({ x, y, direction }) {
-    throw new Error('Remove this statement and implement this function');
+    // If direction isn't north south east west, return InvalidInputError class
+    this.face = direction;
+
   }
 
   evaluate(instructions) {
-    throw new Error('Remove this statement and implement this function');
+    // Finds L R A
   }
 }
