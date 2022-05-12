@@ -47,8 +47,8 @@ export class Robot {
     let directions = instructions.split("");
 
     for (let x of directions) {
-      if (x === 'R' && currentDir === 'north') {
-        this.face = 'east';
+      if (x !== "A") {
+        this.changeFace(currentDir, x);
       }
     }
 
@@ -61,7 +61,9 @@ export class Robot {
   }
   
   changeFace(currentDirection, newDirection) {
+    // takes currentDir + direction
     if (newDirection === "L") {
+      // confirm currentDir, and turn according to direction
       switch (currentDirection) {
         case "north":
           this.face = "west";
@@ -75,7 +77,8 @@ export class Robot {
         case "west":
           this.face = "south";
           break;
-      }
+        }
+        // change this.face
     } else if (newDirection === "R") {
       switch (currentDirection) {
         case "north":
@@ -93,8 +96,5 @@ export class Robot {
       }
     }
   }
-  // takes currentDir + direction
-  // confirm currentDir, and turn according to direction
-  // change this.face
 
 }

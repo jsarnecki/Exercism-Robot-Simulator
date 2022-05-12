@@ -64,7 +64,7 @@ describe('Robot', () => {
       expect(robot.coordinates).toEqual([0, 0]);
     });
 
-    xtest('changes east to south', () => {
+    test('changes east to south', () => {
       robot.place({ direction: 'east', x: 0, y: 0 });
 
       turnRight(robot);
@@ -73,7 +73,7 @@ describe('Robot', () => {
       expect(robot.coordinates).toEqual([0, 0]);
     });
 
-    xtest('changes south to west', () => {
+    test('changes south to west', () => {
       robot.place({ direction: 'south', x: 0, y: 0 });
 
       turnRight(robot);
@@ -82,7 +82,7 @@ describe('Robot', () => {
       expect(robot.coordinates).toEqual([0, 0]);
     });
 
-    xtest('changes west to north', () => {
+    test('changes west to north', () => {
       robot.place({ direction: 'west', x: 0, y: 0 });
 
       turnRight(robot);
