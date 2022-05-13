@@ -49,16 +49,34 @@ export class Robot {
     for (let x of directions) {
       if (x !== "A") {
         this.changeFace(currentDir, x);
+      } else {
+        this.updateCoords(currentDir);
       }
     }
 
-    // if it's A -> function that takes currentDir + the currentCoords to manipulate, return not needed, as it coords/face
-    // if L/R -> function takes in currentDir + direction and manipulates this.face, no return needed
+  }
 
+  updateCoords(currentDirection) {
+    switch(currentDirection) {
+      case "north":
+        this.coords[1]++;
+        break;
+      case "east":
+        this.coords[0]++;
+        break;
+      case "south":
+        this.coords[1]--;
+        break;
+      case "west":
+        this.coords[0]--;
+        break;
+    }
+  }
+
+    
     
     // Coordnates only change from "A"
     // Face only changes from "L" and "R"
-  }
   
   changeFace(currentDirection, newDirection) {
     // takes currentDir + direction
