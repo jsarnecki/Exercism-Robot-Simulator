@@ -2,7 +2,7 @@
 export class InvalidInputError extends Error {
   constructor(message) {
     super();
-    this.message = message || 'Invalid Input';
+    this.message = message || "Invalid input";
   }
 }
 
@@ -17,7 +17,8 @@ export class Robot {
     if (this.face) {
       return this.face;
     }
-    return 'north';
+    // Default "north" if no face assigned
+    return "north";
   }
 
   get coordinates() {
@@ -26,58 +27,48 @@ export class Robot {
   }
 
   place({ x, y, direction }) {
-    // If direction isn't north south east west, return InvalidInputError class
     const newError = new InvalidInputError("invalid robot bearing");
     const compass = ["north", "east", "south", "west"];
     if (!compass.includes(direction)) {
+      // If direction isn't valid, return InvalidInputError instance
       throw newError;
     }
     this.face = direction;
     this.coords = [x, y];
-
   }
 
   evaluate(instructions) {
-    // Finds L R A
-    // Instructions come in as a string, split
-    // Go thru array of instructions
-    // Each direction must follow based on the previous
-    
-    let directions = instructions.split("");
-
-    for (let x of directions) {
+    for (let x of instructions) {
+      // Loop thru each instruction
       if (x !== "A") {
         this.changeFace(this.bearing, x);
       } else {
         this.updateCoords(this.bearing);
       }
     }
-
   }
 
   updateCoords(currentDirection) {
-
+    // Updates the coordinates by 1 depending on current facing direction
     switch(currentDirection) {
       case "north":
-        this.coords[1] += 1;
+        this.coords[1]++;
         break;
       case "east":
-        this.coords[0] += 1;
+        this.coords[0]++;
         break;
       case "south":
-        this.coords[1] -= 1;
+        this.coords[1]--;
         break;
       case "west":
-        this.coords[0] -= 1;
+        this.coords[0]--;
         break;
     }
-
   }
 
   changeFace(currentDirection, newDirection) {
-    // takes currentDir + direction
     if (newDirection === "L") {
-      // confirm currentDir, and turn according to direction
+      // Change direction from turning left
       switch (currentDirection) {
         case "north":
           this.face = "west";
@@ -92,8 +83,8 @@ export class Robot {
           this.face = "south";
           break;
         }
-        // change this.face
     } else if (newDirection === "R") {
+      // Change direction from turning right
       switch (currentDirection) {
         case "north":
           this.face = "east";
@@ -110,5 +101,4 @@ export class Robot {
       }
     }
   }
-
 }
