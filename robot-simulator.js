@@ -42,42 +42,38 @@ export class Robot {
     // Instructions come in as a string, split
     // Go thru array of instructions
     // Each direction must follow based on the previous
-    let currentDir = this.bearing;
-    let currentCoord = this.coordinates;
+    
     let directions = instructions.split("");
 
     for (let x of directions) {
       if (x !== "A") {
-        this.changeFace(currentDir, x);
+        this.changeFace(this.bearing, x);
       } else {
-        this.updateCoords(currentDir);
+        this.updateCoords(this.bearing);
       }
     }
 
   }
 
   updateCoords(currentDirection) {
+
     switch(currentDirection) {
       case "north":
-        this.coords[1]++;
+        this.coords[1] += 1;
         break;
       case "east":
-        this.coords[0]++;
+        this.coords[0] += 1;
         break;
       case "south":
-        this.coords[1]--;
+        this.coords[1] -= 1;
         break;
       case "west":
-        this.coords[0]--;
+        this.coords[0] -= 1;
         break;
     }
+
   }
 
-    
-    
-    // Coordnates only change from "A"
-    // Face only changes from "L" and "R"
-  
   changeFace(currentDirection, newDirection) {
     // takes currentDir + direction
     if (newDirection === "L") {
